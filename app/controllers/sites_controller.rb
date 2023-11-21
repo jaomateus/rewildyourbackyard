@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_action :set_site, only: [:show, :update]
+  before_action :set_site, only: [:show, :edit, :update, :destroy]
 
   def index
     @sites = Site.all
@@ -22,6 +22,19 @@ class SitesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @site.update(site_params)
+      redirect_to site_path(@site)
+    else
+      render "edit", status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @site.destroy
+    redirect_to sites_path, status: :see_other
   end
 
   private

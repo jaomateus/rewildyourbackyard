@@ -1,5 +1,9 @@
-<h1><%= @site.name %></h1>
+<div class="container">
+  <h1><%= @site.name %></h1>
 
-<p><%= @site.description %></p>
+  <p><%= @site.description %></p>
 
-<%= link_to "Back to sites", root_path %>
+  <%= link_to "Edit site info", edit_site_path(@site) %>
+  <%= link_to "Delete site", site_path(@site), turbo %>
+  <%= link_to "Back to sites", root_path %>
+</div>
