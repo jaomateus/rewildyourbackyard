@@ -1,5 +1,6 @@
  <%= simple_form_for site do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
+    <%= link_to "Cancel", :back, class: "btn btn-primary" %>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
