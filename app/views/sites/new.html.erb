@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Add new site</h1>
+
+  <%= simple_form_for @site do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.submit "Create site", class: "btn btn-primary" %>
+  <% end %>
+</div>
