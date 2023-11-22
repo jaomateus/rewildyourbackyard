@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: "sites#index"
   resources :sites, except: :index do
-    resources :guilds, only: [:new, :create]
+    resources :guilds, only: [:show, :new, :create]
   end
   resources :guilds, only: :destroy
 

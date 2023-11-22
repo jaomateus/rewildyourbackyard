@@ -17,7 +17,7 @@
   <%# List of guilds  %>
   <ul>
     <% @site.guilds.each do |guild| %>
-      <li><%= guild.name %></li>
+      <li><%= link_to guild.name, site_guild_path(guild) %></li>
     <% end %>
   </ul>
 </div>
