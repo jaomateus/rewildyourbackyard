@@ -54,8 +54,12 @@ gem "sassc-rails"
 # font awsome
 gem "font-awesome-sass", "~> 6.1"
 
-# Devise for authentication
+# Authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-apple'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
