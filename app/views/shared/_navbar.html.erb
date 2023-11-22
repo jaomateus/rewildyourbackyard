@@ -1,13 +1,51 @@
-<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-     <form class="justify-content-start">
-      <%= link_to  "Create", new_site_path, class: "btn btn-sm btn-outline-secondary" %>
-      <%= link_to  "My RYB", new_site_path, class: "btn btn-sm btn-outline-secondary" %>
-    </form>
+    <%# Brand image  %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "Ryb_Navbar", width: 50 %>
+    <% end %>
+
+    <%# Toggle button %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarScroll">
+      <!-- Centered Search Form -->
+      <form class="d-flex mx-auto my-4 my-md-0" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <!-- Right-aligned Navbar Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Add site</a>
+        </li>
+        <%# Drop down menu  %>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              My RYB
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">My overview</a></li>
+              <li><%= link_to "My sites", sites_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Account settings", sites_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Help", sites_path, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Link</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

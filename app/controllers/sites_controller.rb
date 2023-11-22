@@ -6,6 +6,7 @@ class SitesController < ApplicationController
   end
 
   def show
+    @guild = Guild.new
   end
 
   def new
@@ -34,7 +35,7 @@ class SitesController < ApplicationController
 
   def destroy
     @site.destroy
-    redirect_to sites_path, status: :see_other
+    redirect_to root_path, status: :see_other
   end
 
   private

@@ -1,0 +1,41 @@
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container-fluid">
+    <%# BRAND  %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag  "Ryb_Navbar"%>
+    <% end %>
+
+    <%# TOGGLE BUTTON  %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <%# SEARCH FORM %>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <%# LINKS  %>
+     <form class="justify-content-start">
+      <%= link_to  "Create", new_site_path, class: "btn btn-sm btn-outline-secondary" %>
+      <%= link_to  "My RYB", new_site_path, class: "btn btn-sm btn-outline-secondary" %>
+    </form>
+    <% if user_signed_in? %>
+      <li class="nav-item active">
+        <%= link_to "My sites", sites_path, class: "nav-link" %>
+      </li>
+       <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My RYB
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+      </div>
+    <% else %>
+      <%= link_to  "Login", new_site_path, class: "btn btn-sm btn-outline-secondary" %>
+    <% end %>
+  </div>
+</nav>

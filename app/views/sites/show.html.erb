@@ -4,6 +4,20 @@
   <p><%= @site.description %></p>
 
   <%= link_to "Edit site info", edit_site_path(@site) %>
-  <%= link_to "Delete site", site_path(@site), turbo %>
+  <%= link_to "Delete",
+  site_path(@site),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
   <%= link_to "Back to sites", root_path %>
+
+  <%# Guilds %>
+  <h2>Add new guild</h2>
+  <%= render "guilds/form", site: @site, guild: @guild %>
+
+  <%# List of guilds  %>
+  <ul>
+    <% @site.guilds.each do |guild| %>
+      <li><%= guild.name %></li>
+    <% end %>
+  </ul>
 </div>
