@@ -33,6 +33,11 @@ gem "simple_form"
 # Bootstrap
 gem "bootstrap", "~> 5.2"
 
+#DotEnv
+gem 'dotenv-rails'
+
+gem 'httparty'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

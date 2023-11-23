@@ -1,4 +1,10 @@
 class GuildsController < ApplicationController
+
+  def show
+    @guild = Guild.find(params[:id])
+    @site_plant = SitePlant.new
+  end
+
   def create
     @site = Site.find(params[:site_id])
     @guild = Guild.new(guild_params)

@@ -1,0 +1,23 @@
+<div class="container">
+  <h1><%= @guild.site.name %></h1>
+  <h1><%= @guild.name %></h1>
+
+  <div class="row">
+    <div class="col-4">
+      <% @guild.site_plants.each do |site_plant| %>
+        <%= image_tag site_plant.plant.image_url %>
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Add plant</h3>
+  <%= simple_form_for [@guild, @site_plant ]  do |f|%>
+    <%= f.association :plant,
+                    collection: Plant.all.order(:scientific_name),
+                    label_method: :scientific_name,
+                    prompt: "Select a plant" %>
+    <%= f.input :planted_on %>
+    <%= f.input :observations %>
+    <%= f.submit "Add plant" %>
+  <% end %>
+</div>

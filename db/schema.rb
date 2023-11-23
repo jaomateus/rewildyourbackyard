@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_190837) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_22_190956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,18 +26,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_190837) do
     t.string "scientific_name"
     t.string "common_name"
     t.string "type"
+    t.string "family"
+    t.string "genus"
+    t.string "image_url"
+    t.string "id_trefle"
+    t.date "planted_on"
+    t.text "observations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "site_plants", force: :cascade do |t|
+    t.text "observations"
+    t.date "planted_on"
+    t.bigint "guild_id", null: false
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guild_id"], name: "index_site_plants_on_guild_id"
+    t.index ["plant_id"], name: "index_site_plants_on_plant_id"
   end
 
   create_table "sites", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "project_type"
     t.string "location"
     t.date "starting_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_190837) do
   end
 
   add_foreign_key "guilds", "sites"
+  add_foreign_key "site_plants", "guilds"
+  add_foreign_key "site_plants", "plants"
 end
