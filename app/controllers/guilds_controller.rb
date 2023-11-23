@@ -2,6 +2,8 @@ class GuildsController < ApplicationController
 
   def show
     @guild = Guild.find(params[:id])
+    @site = Site.find(@guild.site_id)
+    @guild_plants = SitePlant.where(guild_id: @guild.id)
     @site_plant = SitePlant.new
   end
 

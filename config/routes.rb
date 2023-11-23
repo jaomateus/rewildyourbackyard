@@ -4,12 +4,21 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: "sites#index"
-  resources :sites, except: :index do
-    resources :guilds, only: [:show, :new, :create] do
-    end
+
+  authenticated :user do
+    root 'sites#index', as: :user_root
   end
-  resources :guilds, only: :destroy do
+
+  root to: "pages#home"
+
+  get "about", to: "pages#about"
+
+  resources :sites do
+    resources :logs, only: [:new, :create]
+    resources :guilds, only: [:index, :show, :new, :create]
     resources :site_plants, only: [:new, :create]
+  end
+
+  resources :guilds, only: :destroy do
   end
 end

@@ -1,9 +1,9 @@
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
-    <%# BRAND  %>
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag  "Ryb_Navbar"%>
-    <% end %>
+
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag  "Ryb_Navbar"%>
+      <% end %>
 
     <%# TOGGLE BUTTON  %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     <%# LINKS  %>
-     <form class="justify-content-start">
+    <form class="justify-content-start">
       <%= link_to  "Create", new_site_path, class: "btn btn-sm btn-outline-secondary" %>
       <%= link_to  "My RYB", new_site_path, class: "btn btn-sm btn-outline-secondary" %>
     </form>
@@ -24,7 +24,7 @@
       <li class="nav-item active">
         <%= link_to "My sites", sites_path, class: "nav-link" %>
       </li>
-       <div class="dropdown">
+      <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             My RYB
           </button>

@@ -38,6 +38,9 @@ gem 'dotenv-rails'
 
 gem 'httparty'
 
+#Geocoder
+gem "geocoder"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

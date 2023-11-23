@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_190956) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_23_114802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_190956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["site_id"], name: "index_guilds_on_site_id"
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "site_plant_id"
+    t.integer "guild_id"
+    t.bigint "site_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_logs_on_site_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -39,12 +50,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_190956) do
   create_table "site_plants", force: :cascade do |t|
     t.text "observations"
     t.date "planted_on"
-    t.bigint "guild_id", null: false
+    t.bigint "site_id", null: false
     t.bigint "plant_id", null: false
+    t.bigint "guild_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guild_id"], name: "index_site_plants_on_guild_id"
     t.index ["plant_id"], name: "index_site_plants_on_plant_id"
+    t.index ["site_id"], name: "index_site_plants_on_site_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -70,6 +83,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_190956) do
   end
 
   add_foreign_key "guilds", "sites"
+  add_foreign_key "logs", "sites"
   add_foreign_key "site_plants", "guilds"
   add_foreign_key "site_plants", "plants"
+  add_foreign_key "site_plants", "sites"
 end

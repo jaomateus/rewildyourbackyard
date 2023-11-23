@@ -2,16 +2,19 @@
   <h1><%= @guild.site.name %></h1>
   <h1><%= @guild.name %></h1>
 
-  <div class="row">
-    <div class="col-4">
-      <% @guild.site_plants.each do |site_plant| %>
-        <%= image_tag site_plant.plant.image_url %>
-      <% end %>
-    </div>
+  <%# Plant Cards  %>
+  <div class="cards">
+    <% @guild_plants.each do |site_plant| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= site_plant.plant.image_url %>')">
+        <%=  site_plant.plant.scientific_name %>
+        <%= link_to "Add Log", new_site_log_path(site_plant_id: site_plant.id) %>
+      </div>
+    <% end %>
   </div>
 
   <h3>Add plant</h3>
-  <%= simple_form_for [@guild, @site_plant ]  do |f|%>
+  <%= simple_form_for [@site, @site_plant]  do |f|%>
+    <%= f.hidden_field :guild_id, value: @guild.id %>
     <%= f.association :plant,
                     collection: Plant.all.order(:scientific_name),
                     label_method: :scientific_name,

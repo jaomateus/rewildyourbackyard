@@ -1,0 +1,8 @@
+<h1>Create new log</h1>
+
+<%= simple_form_for [@site, @log] do |f|%>
+  <%= f.hidden_field :site_plant_id, value: @site_plant.id %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>

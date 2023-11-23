@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  plant_id: 1
+  guild_id: 1
+  sites: one
+
+two:
+  title: MyString
+  description: MyText
+  plant_id: 1
+  guild_id: 1
+  sites: two
