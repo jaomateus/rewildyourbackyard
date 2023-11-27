@@ -6,8 +6,4 @@ export default class extends Controller {
   connect() {
     console.log("places");
   }
-
-  initMap() {
-    console.log(google);
-  }
 }
