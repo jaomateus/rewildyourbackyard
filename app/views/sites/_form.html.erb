@@ -4,6 +4,8 @@
   <%= f.input :project_type %>
   <%= f.input :address %>
   <%= f.input :starting_date %>
+  <%= f.input :cover_photo, as: :file %>
+  <%= f.input :site_photos, as: :file, input_html: { multiple: true } %>
   <%= link_to "Cancel", :back, class: "btn btn-primary" %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

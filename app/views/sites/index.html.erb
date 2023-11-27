@@ -1,15 +1,21 @@
-<div class="container">
-  <h1>My sites</h1>
-
-  <ul>
-    <% @sites.each do |site| %>
-      <li><%= link_to site.name, site_path(site) %></li>
-    <% end %>
-  </ul>
-
-  <div class="map-container">
-    <div id="map"></div>
+<div class="container-sites">
+  <div class="row mt-5">
+    <div class="col-12 col-md-8">
+      <div class="card-sites p-3">
+        <h2>My sites</h2>
+        <ul>
+          <% @sites.each do |site| %>
+            <% if site.cover_photo.attached? %>
+              <%= cl_image_tag site.cover_photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+            <li><%= link_to site.name, site_path(site) %></li>
+          <% end %>
+        </ul>
+        <%= link_to "Add new site", new_site_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <h2></h2>
+    </div>
   </div>
-
-  <%= link_to "Add new site", new_site_path, class: "btn btn-primary" %>
 </div>
