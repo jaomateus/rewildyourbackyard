@@ -4,8 +4,8 @@
 }
 
 .card-sites {
-  background-color: #27272b;
-  border-radius: 10px;
-  border: 0.2px solid rgb(202, 202, 202);
+  background-color: $cards-background-gray;
+  border-radius: $round-medium;
+  border: $border-gray;
   height: 80vh;
 }

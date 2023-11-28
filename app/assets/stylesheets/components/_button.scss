@@ -1,0 +1,13 @@
+.btn-green-small {
+  color: $light-gray;
+  border: $border-gray;
+  padding: 8px 16px;
+  transition: ease-in 0.15s;
+  border-radius: $round-medium;
+  font-size: 0.7rem;
+
+  &:hover {
+    background-color: $ryb-green;
+    border: 0px;
+  }
+}
