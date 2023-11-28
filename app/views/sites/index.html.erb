@@ -1,24 +1,32 @@
-<div class="container-sites">
+<div class="container-85">
   <div class="row mt-5">
-    <h4 class="mb-4">Welcome, <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h4>
+    <h4 class="mb-5">Welcome, <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h4>
     <div class="col-12 col-md-8">
-      <div class="card-sites p-5">
+      <div class="card-gray p-4">
         <div class="d-flex justify-content-between align-items-center">
-          <h5 class="">My sites</h5>
+          <h5>My sites</h5>
           <div>
             <%= link_to "Add new site", new_site_path, class: "btn-green-small" %>
           </div>
         </div>
         <hr class="division-white">
-        <ul>
-          <% @sites.each do |site| %>
-            <% if site.cover_photo.attached? %>
-              <%= cl_image_tag site.cover_photo.key, height: 300, width: 400, crop: :fill %>
+          <div class="cards-sites">
+            <% @sites.each do |site| %>
+              <div class="card-site">
+                <%=link_to site_path(site) do %>
+                  <div class="">
+                    <% if site.cover_photo.attached? %>
+                      <%= cl_image_tag site.cover_photo.key, class: "card-site-photo" %>
+                    <% end %>
+                    <div class="p-2">
+                      <h4 class='card-site-name'><%= site.name %></h4>
+                      <h5 class='card-site-address'><%= site.address %></h5>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             <% end %>
-            <li><%= link_to site.name, site_path(site) %></li>
-          <% end %>
-        </ul>
-
+          </div>
       </div>
     </div>
     <div class="col-12 col-md-4">
