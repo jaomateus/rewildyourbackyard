@@ -19,6 +19,22 @@
   border: $border-gray;
 }
 
+// CARD USER
+.card-user {
+  align-items: center;
+
+  .card-user-info {
+    margin-left: 24px;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: $text-white;
+    margin-bottom: 8px;
+  }
+}
+
+// CARD SITES
 .cards-sites {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -32,6 +48,7 @@
   // width: 200px;
   border: $border-gray;
   border-radius: $round-small;
+  overflow: hidden;
 
   .card-site-photo {
     object-fit: cover;

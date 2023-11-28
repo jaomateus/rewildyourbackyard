@@ -15,6 +15,16 @@
 // General CSS
 a {
   text-decoration: none;
+  color: $ryb-green;
+  transition: ease-in 0.15s;
+
+  &:hover {
+    color: $ryb-light-green;
+  }
+}
+
+p {
+  margin: 0;
 }
 
 body {
@@ -25,7 +35,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   color: $light-gray;
 }
 
