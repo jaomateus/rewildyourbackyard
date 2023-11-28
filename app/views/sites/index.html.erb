@@ -34,7 +34,7 @@
         <%= cl_image_tag current_user.user_photo.key, class: "avatar" %>
         <div class="card-user-info">
           <h6><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h6>
-          <p><%= current_user.profession.capitalize if current_user.profession%></p>
+          <h6><small><%= current_user.profession.capitalize if current_user.profession%></small></h6>
           <p><%= link_to "Edit user info", edit_user_registration_path, class: "" %></p>
         </div>
       </div>

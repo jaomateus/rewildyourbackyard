@@ -6,21 +6,24 @@
 
 // General style
 $font-family-sans-serif: $body-font;
-$headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
-$font-size-base:         1rem;
+$headings-font-family: $headers-font;
+$body-bg: $light-gray;
+$font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$primary: $blue;
+$success: $ryb-light-green;
+$info: $yellow;
+$danger: $red;
+$warning: $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+$border-radius-sm: 4px;
 
 // Override other variables below!
+// Input focus color
+$input-focus-border-color: $ryb-light-green;
+$input-focus-box-shadow: 0 0 0 0.25rem rgba(132, 178, 92, 0.25);
