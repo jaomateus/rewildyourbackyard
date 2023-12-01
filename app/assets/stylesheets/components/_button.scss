@@ -11,3 +11,20 @@
     border: 0px;
   }
 }
+
+.btn-green-lg {
+  width: 80%;
+  text-align: center;
+  padding: 0.5rem 0px;
+  color: $light-gray;
+  border: $border-gray;
+  margin-bottom: 1rem;
+  transition: ease-in 0.15s;
+  border-radius: $round-medium;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: $ryb-green;
+    border: 0px;
+  }
+}
