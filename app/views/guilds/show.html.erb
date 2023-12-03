@@ -5,7 +5,7 @@
   <%# Plant Cards  %>
   <div class="cards">
     <% @guild_plants.each do |site_plant| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= site_plant.plant.image_url %>')">
+      <div class="card-plant" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= site_plant.plant.image_url %>')">
         <%=  site_plant.plant.scientific_name %>
         <%= link_to "Add Log", new_site_log_path(site_plant_id: site_plant.id) %>
       </div>

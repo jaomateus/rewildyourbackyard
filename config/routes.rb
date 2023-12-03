@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "about", to: "pages#about"
 
   resources :sites do
+    member do
+      get :dashboard
+    end
     resources :logs, only: [:new, :create]
     resources :guilds, only: [:index, :show, :new, :create]
     resources :site_plants, only: [:new, :create]

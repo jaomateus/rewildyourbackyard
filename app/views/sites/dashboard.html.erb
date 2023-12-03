@@ -1,0 +1,20 @@
+<div class="dashboard" data-controller="sidebar">
+  <div class="dashboard-sidebar sidebar-left p-2" data-sidebar-target="slideLeft">
+    <div class="dashboard-btn-toggle" data-action="click->sidebar#slideLeft">
+      <%= image_tag "icons/sidebar_left_collapse_icon.svg",
+          alt: "Slide Sidebar Left",
+          width: "40",
+          height: "40",
+          data: { 'sidebar-target' => 'changeIcon' }
+      %>
+    </div>
+    <%= render "sites/dashboard/sidebarleft", site: @site %>
+  </div>
+  <div class="dashboard-main">
+    <%= render "sites/dashboard/guilds", site: @site %>
+  </div>
+  <div class="dashboard-sidebar sidebar-right" data-sidebar-target="slideRight">
+    <%= render "sites/dashboard/sidebarright", site: @site %>
+    <button data-action="click->sidebar#slideRight">Toggle Sidebar</button>
+  </div>
+</div>

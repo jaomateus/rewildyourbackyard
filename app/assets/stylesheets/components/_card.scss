@@ -1,4 +1,5 @@
-.card-category {
+// PLANT CARD
+.card-plant {
   background-size: cover;
   background-position: center;
   height: 180px;
@@ -64,6 +65,24 @@
 
   .card-site-address {
     font-size: 0.7rem;
+  }
+}
+
+// CARD GUILD
+.card-round-guild {
+  width: calc(15vw * 0.8);
+  height: calc(15vw * 0.8);
+  background-color: $ryb-green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Center the text horizontally */
+  overflow: hidden; /* Ensure content doesn't overflow and affect alignment */
+  padding: 5px; /* Add padding if necessary */
+  /* Add any other necessary styles */
+  h4 {
+    margin: 0;
   }
 }
 

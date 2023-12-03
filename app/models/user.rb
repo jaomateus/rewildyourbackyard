@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_one_attached :user_photo
+  has_many :sites
 
   validates :first_name, presence: true
   validates :last_name, presence: true

@@ -139,67 +139,98 @@ BARROS_PLANTS = [
   "Calycanthus floridus"
 ]
 
-def fetch_plant_data(plant_name)
-  response = HTTParty.get(
-    "https://trefle.io/api/v1/plants?token=#{ENV['TREFLE_TOKEN']}&filter[scientific_name]=#{plant_name}"
-  )
+# def fetch_plant_data(plant_name)
+#   response = HTTParty.get(
+#     "https://trefle.io/api/v1/plants?token=#{ENV['TREFLE_TOKEN']}&filter[scientific_name]=#{plant_name}"
+#   )
 
-  plant_data = response['data'][0] if response.code == 200
-  return nil unless plant_data
+#   plant_data = response['data'][0] if response.code == 200
+#   return nil unless plant_data
 
-  {
-    scientific_name: plant_data['scientific_name'],
-    common_name: plant_data['common_name'],
-    family: plant_data['family'],
-    genus: plant_data['genus'],
-    image_url: plant_data['image_url'],
-    id_trefle: plant_data['id']
-  }
-end
+#   {
+#     scientific_name: plant_data['scientific_name'],
+#     common_name: plant_data['common_name'],
+#     family: plant_data['family'],
+#     genus: plant_data['genus'],
+#     image_url: plant_data['image_url'],
+#     id_trefle: plant_data['id']
+#   }
+# end
 
 # ------------ Comment out when not necessary ----------
-puts 'First, let\'s delete all the plants'
-Plant.delete_all
+# puts 'First, let\'s delete all the plants'
+# Plant.delete_all
 
-puts "Let's fill the database with some plants"
-puts 'Creating plants...'
+# puts "Let's fill the database with some plants"
+# puts 'Creating plants...'
 
-BARROS_PLANTS.each do |plant_name|
-  plant_data = fetch_plant_data(plant_name)
-  puts plant_data
-  if plant_data
-    Plant.create!(
-      id_trefle: plant_data[:id_trefle],
-      scientific_name: plant_data[:scientific_name],
-      common_name: plant_data[:common_name],
-      family: plant_data[:family],
-      genus: plant_data[:genus],
-      image_url: plant_data[:image_url],
-    )
-    puts "created #{plant_name}"
-  end
-end
-
-puts "Deleting sites..."
+# BARROS_PLANTS.each do |plant_name|
+#   plant_data = fetch_plant_data(plant_name)
+#   puts plant_data
+#   if plant_data
+#     Plant.create!(
+#       id_trefle: plant_data[:id_trefle],
+#       scientific_name: plant_data[:scientific_name],
+#       common_name: plant_data[:common_name],
+#       family: plant_data[:family],
+#       genus: plant_data[:genus],
+#       image_url: plant_data[:image_url],
+#     )
+#     puts "created #{plant_name}"
+#   end
+# end
+puts "Destroying all sites..."
 Site.destroy_all
 
+puts "Destroying all users..."
+User.destroy_all
+
+puts "Creating users..."
+user = User.create!(email: "jaomateus@gmail.com",
+                    password: "123123",
+                    first_name: "João",
+                    last_name: "Mateus",
+                    profession: "Landscape Architect / Web Developer")
+file = File.open("app/assets/images/users/user1.jpeg")
+user.user_photo.attach(io: file, filename: "user.jpeg", content_type: "image/png")
+user.save
+
+
 puts "Creating sites..."
+PROJECT_TYPES = ["Food forest", "Forest garden", "Rewilding"]
+
 sites = [
   { name: 'Horto dos Barros',
-    description: 'Food forest to regenerate degraded piece of land'},
+    description: 'Food forest to regenerate degraded piece of land',
+    address: "Praia da Areia Branca"},
   { name: 'Bica',
-    description: 'Rewilding project'},
+    description: 'Rewilding project',
+    address: "Lourinhã"},
   { name: 'Vale',
-    description: 'Regenerative orchard'},
+    description: 'Regenerative orchard',
+    address: "Vale de adares"},
 ]
 
 sites.each do |site|
-  site = Site.create!(name: site[:name], description: site[:description])
-  guilds = ['Guild1', 'Guild2', 'Guild3']
+  site = Site.create!(name: site[:name],
+                      description: site[:description],
+                      address: site[:address],
+                      project_type: PROJECT_TYPES.sample,
+                      starting_date: Time.now(),
+                      user_id: user.id)
+
+  guilds = [{name: 'Bananeira', photo: "bananeira.jpeg"},
+            {name: 'Ervas aromáticas', photo: "aromatic_herbs.jpeg"},
+            {name: 'Pêra abacate', photo: "abacateiro.jpeg"},
+            {name: 'Limoeiro', photo: "limoeiro.jpeg"},
+            {name: 'Laranjeira', photo: "laranjeira.webp"}]
 
   guilds.each do |guild|
-    Guild.create!(name: guild, site_id: site.id)
+    new_guild = Guild.create!(name: guild[:name], site_id: site.id)
+    file = File.open("app/assets/images/guilds/#{guild[:photo]}")
+    new_guild.cover_photo.attach(io: file, filename: guild[:photo], content_type: "image/png")
+    new_guild.save
   end
 end
 
-puts 'Finished...'
+puts 'Finished creating sites and guilds...'

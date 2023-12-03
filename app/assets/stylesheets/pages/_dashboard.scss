@@ -1,0 +1,72 @@
+// SIDEBARE
+.dashboard {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 80px);
+}
+
+.dashboard-sidebar {
+  background-color: $middle-gray-2;
+  // height: calc(100vh - 80px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.sidebar-left {
+  width: 15%;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-left-hidden {
+  transform: translateX(-80%);
+}
+
+.dashboard-btn-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.sidebar-right {
+  width: 25%;
+  transition: transform 0.3s ease;
+}
+
+.dashboard-main {
+  flex-grow: 1;
+  // width: 60%;
+  // margin: 0 auto;
+}
+
+.sidebar-dashboard-buttons {
+  width: 100%;
+}
+
+// DASHBOARD
+.dashboard-guilds {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* Adjust the number of columns as needed */
+  margin-top: 2rem;
+  // width: 100%;
+  gap: 2rem;
+  justify-items: center; /* Center items horizontally within each grid cell */
+}
+
+// MEDIAQUERIES
+@media (max-width: 992px) {
+  .dashboard-guilds {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-guilds {
+    grid-template-columns: 1fr;
+  }
+}

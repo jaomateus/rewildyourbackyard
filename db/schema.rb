@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_28_212437) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_152217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_212437) do
     t.bigint "site_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo_cover"
     t.index ["site_id"], name: "index_guilds_on_site_id"
   end
 
@@ -99,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_212437) do
     t.float "latitude"
     t.float "longitude"
     t.string "cover_photo"
+    t.bigint "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -124,4 +126,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_212437) do
   add_foreign_key "site_plants", "guilds"
   add_foreign_key "site_plants", "plants"
   add_foreign_key "site_plants", "sites"
+  add_foreign_key "sites", "users"
 end

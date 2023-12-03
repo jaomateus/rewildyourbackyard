@@ -1,12 +1,8 @@
 class SitesController < ApplicationController
-  before_action :set_site, only: [:show, :edit, :update, :destroy]
+  before_action :set_site, only: [:edit, :update, :destroy, :dashboard]
 
   def index
     @sites = Site.all
-  end
-
-  def show
-    @guild = Guild.new
   end
 
   def new
@@ -15,6 +11,7 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(site_params)
+    @site.user = current_user
     if @site.save
       redirect_to site_path(@site)
     else
@@ -37,6 +34,11 @@ class SitesController < ApplicationController
     @site.destroy
     redirect_to root_path, status: :see_other
   end
+
+  def dashboard
+    @guild = Guild.new
+  end
+
 
   private
 

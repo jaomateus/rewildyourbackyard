@@ -21,6 +21,6 @@ class GuildsController < ApplicationController
   private
 
   def guild_params
-    params.require(:guild).permit(:name)
+    params.require(:guild).permit(:name, :cover_photo)
   end
 end

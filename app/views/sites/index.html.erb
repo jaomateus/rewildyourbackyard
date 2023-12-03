@@ -10,28 +10,30 @@
           </div>
         </div>
         <hr class="division-white">
-          <div class="cards-sites">
-            <% @sites.each do |site| %>
-              <div class="card-site">
-                <%=link_to site_path(site) do %>
-                  <div class="">
-                    <% if site.cover_photo.attached? %>
-                      <%= cl_image_tag site.cover_photo.key, class: "card-site-photo" %>
-                    <% end %>
-                    <div class="p-2">
-                      <h4 class='card-site-name'><%= site.name %></h4>
-                      <h5 class='card-site-address'><%= site.address %></h5>
-                    </div>
+        <div class="cards-sites">
+          <% @sites.where(user_id: current_user.id).each do |site|  %>
+            <div class="card-site">
+              <%=link_to dashboard_site_path(site) do %>
+                <div class="">
+                  <% if site.cover_photo.attached? %>
+                    <%= cl_image_tag site.cover_photo.key, class: "card-site-photo" %>
+                  <% end %>
+                  <div class="p-2">
+                    <h4 class='card-site-name'><%= site.name %></h4>
+                    <h5 class='card-site-address'><%= site.address %></h5>
                   </div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-12 col-md-4">
       <div class="card-gray card-user p-4 d-flex">
-        <%= cl_image_tag current_user.user_photo.key, class: "avatar" %>
+        <% if current_user.user_photo.attached? %>
+          <%= cl_image_tag current_user.user_photo.key, class: "avatar" %>
+        <% end %>
         <div class="card-user-info">
           <h6><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h6>
           <h6><small><%= current_user.profession.capitalize if current_user.profession%></small></h6>
