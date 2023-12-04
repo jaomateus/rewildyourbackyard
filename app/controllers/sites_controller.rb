@@ -13,7 +13,9 @@ class SitesController < ApplicationController
     @site = Site.new(site_params)
     @site.user = current_user
     if @site.save
-      redirect_to site_path(@site)
+      # Create the site guild
+      guild = Guild.create(name: "Site", site: @site)
+      redirect_to dashboard_site_path(@site)
     else
       render 'new', status: :unprocessable_entity
     end
