@@ -1,31 +1,9 @@
 <div class="dashboard" data-controller="sidebar">
-  <div class="dashboard-sidebar sidebar-left p-2" data-sidebar-target="slideLeft">
-    <div class="sidebar-tools">
-      <%= render "sites/dashboard/sidebarleft", site: @site %>
-    </div>
-    <div class="sidebar-btn-toggle" data-action="click->sidebar#slideLeft">
-      <%= image_tag "icons/sidebar_left_collapse_icon.svg",
-          alt: "Slide Sidebar Left",
-          width: "40",
-          height: "40",
-          data: { 'sidebar-target' => 'changeIconLeft' }
-      %>
-    </div>
+  <%= render "sites/dashboard/sidebarleft", site: @site %>
+  <div class="sidebar-tools" data-sidebar-target="sidebarTools">
+    <h4>View</h4>
   </div>
-  <div class="dashboard-main">
+  <div class="dashboard-main" data-target="dashboardMain">
     <%= render "sites/dashboard/guilds", site: @site %>
-  </div>
-  <div class="dashboard-sidebar sidebar-right p-2" data-sidebar-target="slideRight">
-    <div class="sidebar-btn-toggle" data-action="click->sidebar#slideRight">
-      <%= image_tag "icons/sidebar_right_collapse_icon.svg",
-              alt: "Slide Sidebar Right",
-              width: "40",
-              height: "40",
-              data: { 'sidebar-target' => 'changeIconRight' }
-          %>
-    </div>
-    <div class="sidebar-tools">
-      <%= render "sites/dashboard/sidebarright", site: @site %>
-    </div>
   </div>
 </div>

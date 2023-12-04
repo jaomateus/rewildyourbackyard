@@ -1,52 +1,34 @@
 // SIDEBARE
 .dashboard {
   display: flex;
-  width: 100vw;
   height: calc(100vh - 80px);
 }
 
-.dashboard-sidebar {
-  background-color: $middle-gray-2;
-  // height: calc(100vh - 80px);
-  height: 100%;
-  display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  padding: 0;
+.sidebar-buttons {
+  background-color: $middle-gray;
+  z-index: 1000;
+  width: 50px;
+  // background-color: $middle-gray;
 }
 
-.sidebar-left {
-  width: 15%;
-  transition: transform 0.3s ease;
+.sidebar-tools {
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Include width transition */
+  background-color: aqua;
+  width: 20%;
 }
 
-.sidebar-left-hidden {
-  transform: translateX(-80%);
-}
-
-.sidebar-btn-toggle {
-  // width: 100%;
-  // display: flex;
-  // justify-content: end;
-}
-
-.sidebar-right {
-  width: 25%;
-  transition: transform 0.3s ease;
-}
-
-.sidebar-right-hidden {
-  transform: translateX(85%);
+.sidebar-tools-visible {
+  transform: translateX(-100%);
+  width: 0; /* Hide the sidebar by setting its width to 0 */
 }
 
 .dashboard-main {
   flex-grow: 1;
-  // width: 60%;
-  // margin: 0 auto;
+  transition: margin-left 0.3s ease-in-out; /* Transition for adjusting margin */
 }
 
-.sidebar-dashboard-buttons {
-  width: 100%;
+.dashboard-main.expanded {
+  margin-left: 0; /* Adjust margin when sidebar is hidden */
 }
 
 // DASHBOARD
