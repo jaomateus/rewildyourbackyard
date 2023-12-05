@@ -4,14 +4,10 @@
     <div class="sidebar-tools-buttons w-100">
       <h4>View</h4>
       <!-- BUTTONS -->
-      <div>
-        <%= link_to "Guilds", "#", class: "btn-green-lg",
+      <%= link_to "Guilds", "#", class: "btn-green-lg",
                     data: { action: "click->dashboard#switchView", view: "guilds" } %>
-      </div>
-      <div>
-        <%= link_to "Site plants", "#", class: "btn-green-lg",
+      <%= link_to "Site plants", "#", class: "btn-green-lg",
                     data: { action: "click->dashboard#switchView", view: "sitePlants" } %>
-      </div>
     </div>
     <!-- NEW GUILD FORM -->
     <div class="sidebar-tools-guild-form" data-dashboard-target="newGuildForm">

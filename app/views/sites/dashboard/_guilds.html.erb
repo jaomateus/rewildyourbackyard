@@ -1,7 +1,7 @@
 <% site.guilds.each do |guild| %>
   <h4 class="card-round-guild"><%= guild.name %></h4>
   <ul>
-    <%= guild.site_plants.each do |site_plant| %>
+    <% guild.site_plants.each do |site_plant| %>
       <li><%= site_plant.plant_id.scientific_name %></li>
     <% end %>
   </ul>
