@@ -1,0 +1,11 @@
+<!-- NEW GUILD FORM -->
+<h3>Add plant</h3>
+<%= simple_form_for [site, site_plant]  do |f|%>
+  <%= f.association :plant,
+                    collection: Plant.all.order(:scientific_name),
+                    label_method: :scientific_name,
+                    prompt: "Select a plant" %>
+  <%= f.input :planted_on %>
+  <%= f.input :observations %>
+  <%= f.submit "Add plant" %>
+<% end %>

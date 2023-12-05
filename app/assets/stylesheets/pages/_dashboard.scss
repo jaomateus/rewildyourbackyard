@@ -4,22 +4,23 @@
   height: calc(100vh - 80px);
 }
 
-.sidebar-buttons {
-  background-color: $middle-gray;
-  z-index: 1000;
-  width: 50px;
-  // background-color: $middle-gray;
-}
-
 .sidebar-tools {
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Include width transition */
-  background-color: aqua;
-  width: 20%;
+  background-color: $middle-gray-2;
+  width: 20vw;
+  padding: 20px;
 }
 
 .sidebar-tools-visible {
   transform: translateX(-100%);
   width: 0; /* Hide the sidebar by setting its width to 0 */
+}
+
+.sidebar-buttons {
+  background-color: $middle-gray;
+  z-index: 1000;
+  width: 50px;
+  // background-color: $middle-gray;
 }
 
 .dashboard-main {

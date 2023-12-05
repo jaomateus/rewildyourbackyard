@@ -8,6 +8,7 @@ export default class extends Controller {
     "guildsView",
     "sitePlantsView",
     "newGuildForm",
+    "newSitePlantForm",
   ];
 
   connect() {
@@ -30,14 +31,17 @@ export default class extends Controller {
 
   // SWITCH DASBOARD VIEW
   switchView(event) {
+    event.preventDefault();
     const viewName = event.target.dataset.view;
     this.hideAllViews();
     if (viewName === "guilds") {
       this.showGuilds();
+      this.hideSitePlantsForm();
       this.showNewGuildForm();
     } else if (viewName === "sitePlants") {
       this.showSitePlants();
       this.hideNewGuildForm();
+      this.showSitePlantsForm();
     }
   }
 
@@ -54,12 +58,20 @@ export default class extends Controller {
     this.sitePlantsViewTarget.style.display = "block";
   }
 
-  // TOGGLE NEW GUILD FORM
+  // TOGGLE FORMS
   showNewGuildForm() {
     this.newGuildFormTarget.classList.remove("d-none");
   }
 
   hideNewGuildForm() {
     this.newGuildFormTarget.classList.add("d-none");
+  }
+
+  showSitePlantsForm() {
+    this.newSitePlantFormTarget.classList.remove("d-none");
+  }
+
+  hideSitePlantsForm() {
+    this.newSitePlantFormTarget.classList.add("d-none");
   }
 }
