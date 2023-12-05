@@ -1,13 +1,27 @@
 <div class="dashboard" data-controller="dashboard">
   <%= render "sites/dashboard/sidebarleft", site: @site %>
   <div class="sidebar-tools" data-dashboard-target="sidebarTools">
-    <h4>View</h4>
-    <!-- Content will be rendered here -->
-    <button data-action="click->dashboard#render_guilds">First View</button>
-    <button data-action="click->dashboard#render_sitePLants">Second View</button>
+    <div class="sidebar-tools buttons">
+      <h4>View</h4>
+      <!-- Content will be rendered here -->
+      <button data-action="click->dashboard#switchView"
+        data-view="guilds">Guilds</button>
+      <button data-action="click->dashboard#switchView" data-view="sitePlants">Site plants</button>
+    </div>
+    <div class="sidebar-tools-guild-form" data-dashboard-target="newGuildForm">
+      <h4>Add new guild</h4>
+      <%= simple_form_for [@site, @guild] do |f|%>
+        <%= f.input :name %>
+        <%= f.submit %>
+      <% end%>
+    </div>
   </div>
-  <div class="dashboard-main" data-dashboard-target="dashboardMain">
-    <%= render "sites/dashboard/guilds", site: @site %>
-    <!-- Content will be rendered here -->
+  <div class="dashboard-main">
+    <div class="dashboard-guilds" data-dashboard-target="guildsView">
+      <%= render "sites/dashboard/guilds", site: @site %>
+    </div>
+    <div class="dashboard-site-plants" data-dashboard-target="sitePlantsView">
+      <p>test</p>
+    </div>
   </div>
 </div>

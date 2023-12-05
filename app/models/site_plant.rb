@@ -1,5 +1,7 @@
 class SitePlant < ApplicationRecord
   belongs_to :plant
+  belongs_to :guild
+
   validates :plant_id, :observations, presence: true
 
   def def
