@@ -1,5 +1,4 @@
 class GuildsController < ApplicationController
-
   def show
     @guild = Guild.find(params[:id])
     @site = Site.find(@guild.site_id)

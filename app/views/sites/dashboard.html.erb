@@ -1,9 +1,13 @@
-<div class="dashboard" data-controller="sidebar">
+<div class="dashboard" data-controller="dashboard">
   <%= render "sites/dashboard/sidebarleft", site: @site %>
-  <div class="sidebar-tools" data-sidebar-target="sidebarTools">
+  <div class="sidebar-tools" data-dashboard-target="sidebarTools">
     <h4>View</h4>
+    <!-- Content will be rendered here -->
+    <button data-action="click->dashboard#render_guilds">First View</button>
+    <button data-action="click->dashboard#render_sitePLants">Second View</button>
   </div>
-  <div class="dashboard-main" data-target="dashboardMain">
+  <div class="dashboard-main" data-dashboard-target="dashboardMain">
     <%= render "sites/dashboard/guilds", site: @site %>
+    <!-- Content will be rendered here -->
   </div>
 </div>
