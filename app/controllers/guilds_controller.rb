@@ -11,7 +11,7 @@ class GuildsController < ApplicationController
     @guild = Guild.new(guild_params)
     @guild.site = @site
     if @guild.save
-      redirect_to dashboard_site_path(@site)
+      redirect_to dashboard_site_path(@site, view: 'guilds')
     else
       render 'sites/show', status: :unprocessable_entity
     end

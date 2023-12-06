@@ -1,5 +1,5 @@
   <%# Plant Cards  %>
-<div class="cards">
+<div class="cards-plants">
   <% site.site_plants.each do |site_plant| %>
     <div class="card-plant" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= site_plant.plant.image_url %>')">
       <%=  site_plant.plant.scientific_name %>
