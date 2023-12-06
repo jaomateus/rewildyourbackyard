@@ -28,12 +28,22 @@ export default class extends Controller {
   }
 
   // Method for toggling the sidebar
-  toggleSidebarLeft() {
+  toggle_sidebar_left() {
     const icon = this.changeIconLeftTarget;
     const sidebarTools = this.sidebarToolsTarget;
 
-    // sidebarTools.classList.toggle("sidebar-tools-visible");
-    sidebarTools.classList.toggle("d-none");
+    sidebarTools.classList.toggle("sidebar-tools-visible");
+    sidebarTools.classList.toggle("sidebar-tools-hidden");
+    this.dashboardMainTarget.classList.toggle("expanded");
+
+    // Toggle visibility of content within sidebar based on sidebar visibility
+    if (sidebarTools.classList.contains("sidebar-tools-visible")) {
+      // If sidebar is visible, display the content
+      this.showCurrentViewContent();
+    } else {
+      // If sidebar is hidden, hide all content
+      this.hideAllViews();
+    }
 
     // Toggle the icon
     icon.src = icon.src.includes("sidebar_left_collapse_icon")

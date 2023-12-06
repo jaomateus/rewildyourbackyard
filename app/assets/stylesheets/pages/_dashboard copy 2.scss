@@ -5,15 +5,25 @@
 }
 
 .sidebar-tools {
-  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Include width transition */
+  transition: transform 0.3s ease, width 0.3s ease; /* Include width transition */
   background-color: $middle-gray-2;
   width: 20vw;
   padding: 20px;
 }
 
-.sidebar-tools-visible {
+/* Content inside sidebar-tools */
+.sidebar-tools-content {
+  transition: transform 0.3s ease; /* Apply transition for smooth movement */
+}
+
+/* Hide sidebar-tools by sliding it to the left */
+.sidebar-tools-hidden {
   transform: translateX(-100%);
-  width: 0; /* Hide the sidebar by setting its width to 0 */
+  width: 0; /* Slide the sidebar-tools to the left and hide by setting width to 0 */
+}
+
+.sidebar-tools-hidden .sidebar-tools-content {
+  transform: translateX(-100%); /* Slide the content to the left */
 }
 
 .sidebar-buttons {

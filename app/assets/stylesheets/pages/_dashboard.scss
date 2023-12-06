@@ -5,25 +5,10 @@
 }
 
 .sidebar-tools {
-  transition: transform 0.3s ease, width 0.3s ease; /* Include width transition */
+  transition: 0.3s ease-in-out; /* Add a transition for smoothness */
   background-color: $middle-gray-2;
-  width: 20vw;
+  // min-width: 150px;
   padding: 20px;
-}
-
-/* Content inside sidebar-tools */
-.sidebar-tools-content {
-  transition: transform 0.3s ease; /* Apply transition for smooth movement */
-}
-
-/* Hide sidebar-tools by sliding it to the left */
-.sidebar-tools-hidden {
-  transform: translateX(-100%);
-  width: 0; /* Slide the sidebar-tools to the left and hide by setting width to 0 */
-}
-
-.sidebar-tools-hidden .sidebar-tools-content {
-  transform: translateX(-100%); /* Slide the content to the left */
 }
 
 .sidebar-buttons {
@@ -35,11 +20,7 @@
 
 .dashboard-main {
   flex-grow: 1;
-  transition: margin-left 0.3s ease-in-out; /* Transition for adjusting margin */
-}
-
-.dashboard-main.expanded {
-  margin-left: 0; /* Adjust margin when sidebar is hidden */
+  transition: 0.3s ease-in-out; /* Transition for adjusting margin */
 }
 
 // DASHBOARD
@@ -53,6 +34,10 @@
   // width: 100%;
   gap: 2rem;
   justify-items: center; /* Center items horizontally within each grid cell */
+}
+
+.dashboard-site-plants {
+  padding: 1rem;
 }
 
 // MEDIAQUERIES
