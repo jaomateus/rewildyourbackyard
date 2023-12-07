@@ -1,0 +1,18 @@
+<div class="sidebar-tools-content">
+  <div class="sidebar-tools-buttons w-100">
+    <h4>View</h4>
+    <!-- Buttons to switch views -->
+    <%= link_to "Guilds", "#", class: "btn btn-outline-success",
+                      data: { action: "click->dashboard#switchView", view: "guilds" } %>
+    <%= link_to "Site plants", "#", class: "btn btn-outline-success",
+                      data: { action: "click->dashboard#switchView", view: "sitePlants" } %>
+  </div>
+</div>
+<!-- Form for creating new guild -->
+<div class="sidebar-tools-guild-form" data-dashboard-target="newGuildForm">
+  <%= render "sites/dashboard/new_guild_form", site: site, guild: guild %>
+</div>
+<!-- Form for creating new site plant -->
+<div class="sidebar-tools-site-plants-form d-none" data-dashboard-target="newSitePlantForm">
+  <%= render "sites/dashboard/new_sitePlant_form", site: site, site_plant: site_plant %>
+</div>

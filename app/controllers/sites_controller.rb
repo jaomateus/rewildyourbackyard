@@ -40,6 +40,7 @@ class SitesController < ApplicationController
   def dashboard
     @guild = Guild.new
     @site_plant = SitePlant.new
+    @plants = Plant.all
   end
 
 

@@ -1,5 +1,5 @@
 <h4>Add new guild</h4>
 <%= simple_form_for [site, guild] do |f|%>
   <%= f.input :name %>
-  <%= f.submit %>
+  <%= f.submit "Create Guild", class: "btn btn-outline-success" %>
 <% end%>

@@ -1,0 +1,16 @@
+<div class="sidebar-tools-content">
+  <h6 class=""><%= site.name %></h6>
+  <p class="text-middle-gray mb-3"><%= site.description %></p>
+  <div class="sidebar-dashboard-buttons d-flex flex-column align-items-center">
+    <!-- Button trigger modal -->
+    <%= link_to "Add plants to your site", "#", class: "btn-green-lg", data: { bs_toggle: "modal", bs_target: "#staticBackdrop" } %>
+    <%= link_to "Editsite info", edit_site_path(site), class: "btn-green-lg"%>
+    <%= link_to "Deletesite",
+        site_path(site),
+        class: "btn-green-lg",
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+    <%= link_to "Back to sites", root_path, class: "btn-green-lg"%>
+  </div>
+</div>
+<!-- Plants modal -->
+<%= render "sites/dashboard/plants_modal", plants: plants, site: site%>

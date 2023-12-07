@@ -1,29 +1,15 @@
-// SIDEBARE
+// DASHBOARD STYLES
 .dashboard {
   display: flex;
   height: calc(100vh - 80px);
 }
 
-.sidebar-tools {
-  transition: 0.3s ease-in-out; /* Add a transition for smoothness */
-  background-color: $middle-gray-2;
-  // min-width: 150px;
-  padding: 20px;
-}
-
-.sidebar-buttons {
-  background-color: $middle-gray;
-  z-index: 1000;
-  width: 50px;
-  // background-color: $middle-gray;
-}
-
+// DASHBOARD MAIN STYLES
 .dashboard-main {
   flex-grow: 1;
   transition: 0.3s ease-in-out; /* Transition for adjusting margin */
 }
 
-// DASHBOARD
 .dashboard-guilds {
   display: grid;
   grid-template-columns: repeat(

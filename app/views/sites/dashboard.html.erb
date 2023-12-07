@@ -1,26 +1,9 @@
 <div class="dashboard" data-controller="dashboard">
   <!-- Renders the sidebar -->
-  <%= render "sites/dashboard/sidebarleft", site: @site %>
+  <%= render "sites/dashboard/sidebar_buttons"%>
   <!-- Sidebar tools section -->
-  <div class="sidebar-tools px-3 sidebar-tools-visible" data-dashboard-target="sidebarTools">
-    <div class="sidebar-tools-content">
-      <div class="sidebar-tools-buttons w-100">
-        <h4>View</h4>
-        <!-- Buttons to switch views -->
-        <%= link_to "Guilds", "#", class: "btn-green-lg",
-                      data: { action: "click->dashboard#switchView", view: "guilds" } %>
-        <%= link_to "Site plants", "#", class: "btn-green-lg",
-                      data: { action: "click->dashboard#switchView", view: "sitePlants" } %>
-      </div>
-    </div>
-    <!-- Form for creating new guild -->
-    <div class="sidebar-tools-guild-form" data-dashboard-target="newGuildForm">
-      <%= render "sites/dashboard/new_guild_form", site: @site, guild: @guild %>
-    </div>
-    <!-- Form for creating new site plant -->
-    <div class="sidebar-tools-site-plants-form d-none" data-dashboard-target="newSitePlantForm">
-      <%= render "sites/dashboard/new_sitePlant_form", site: @site, site_plant: @site_plant %>
-    </div>
+  <div class="sidebar sidebar-tools px-3 sidebar-tools-visible" data-dashboard-target="sidebarTools">
+    <%= render "sites/dashboard/sidebar_tools", site: @site, guild: @guild, site_plant: @site_plant%>
   </div>
   <!-- Main dashboard content -->
   <div class="dashboard-main" data-dashboard-target="dashboardMain">
@@ -32,5 +15,9 @@
     <div class="dashboard-site-plants" data-dashboard-target="sitePlantsView">
       <%= render "sites/dashboard/sitePlants", site: @site %>
     </div>
+  </div>
+  <!-- Sidebar info section -->
+  <div class="sidebar sidebar-info px-3 sidebar-info-visible">
+    <%= render "sites/dashboard/sidebar_info", site: @site, plants: @plants%>
   </div>
 </div>
